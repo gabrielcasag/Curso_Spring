@@ -1,7 +1,15 @@
 package com.gabrielcasag.bookstoremanager.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Book {
 
@@ -28,62 +36,4 @@ public class Book {
     @JoinColumn(name= "author_id")
     private Author author;
 
-    public Book() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getPages() {
-        return pages;
-    }
-
-    public Integer getChapters() {
-        return chapters;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public String getPublisherName() {
-        return publisherName;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPages(Integer pages) {
-        this.pages = pages;
-    }
-
-    public void setChapters(Integer chapters) {
-        this.chapters = chapters;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public void setPublisherName(String publisherName) {
-        this.publisherName = publisherName;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
 }

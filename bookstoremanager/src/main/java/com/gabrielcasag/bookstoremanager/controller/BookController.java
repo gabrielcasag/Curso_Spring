@@ -5,6 +5,7 @@ import com.gabrielcasag.bookstoremanager.entity.Book;
 import com.gabrielcasag.bookstoremanager.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ public class  BookController {
     }
 
     @PostMapping
-    public MessageResponseDTO create(Book book) {
+    public MessageResponseDTO create(@RequestBody Book book) {
         Book savedBook = bookRepository.save(book);
 
         MessageResponseDTO message = new MessageResponseDTO();
