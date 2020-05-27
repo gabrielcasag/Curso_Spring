@@ -3,6 +3,7 @@ package com.gabrielcasag.bookstoremanager.controller;
 import com.gabrielcasag.bookstoremanager.dto.MessageResponseDTO;
 import com.gabrielcasag.bookstoremanager.entity.Book;
 import com.gabrielcasag.bookstoremanager.repository.BookRepository;
+import com.gabrielcasag.bookstoremanager.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,20 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/books")
 public class  BookController {
 
-    private BookRepository bookRepository;
+    private BookService bookService;
 
     @Autowired
-    public BookController(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
     }
 
     @PostMapping
     public MessageResponseDTO create(@RequestBody Book book) {
-        Book savedBook = bookRepository.save(book);
-
-        MessageResponseDTO message = new MessageResponseDTO();
-        message.setMessage("Book created with ID:"+savedBook.getId());
-
-        return message;
+        return bookService.create(book);
     }
+
 }
